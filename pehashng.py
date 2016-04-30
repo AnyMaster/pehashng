@@ -23,11 +23,11 @@ def align_down_p2(number):
     return 1 << (number.bit_length() - 1) if number else 0
 
 
-def align_up(number, even_boundary):
+def align_up(number, boundary_p2):
     # type: (int, int) -> int
-    assert not even_boundary & 1
-    even_boundary -= 1
-    return (number + even_boundary) & ~ even_boundary
+    assert boundary_p2 == align_down_p2(boundary_p2)
+    boundary_p2 -= 1
+    return (number + boundary_p2) & ~ boundary_p2
 
 
 def pehashng(pe_file):
