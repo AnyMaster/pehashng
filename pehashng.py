@@ -14,7 +14,7 @@ import logging
 
 from pefile import PE, PEFormatError
 
-__version__ = '0.8.0'
+__version__ = '0.8.1'
 __author__ = 'AnyMaster'
 
 
@@ -95,12 +95,12 @@ def pehashng(pe_file):
         # (0..1} ∈ R   ->  [0..8] ⊂ N
         complexity = 0
         if section.SizeOfRawData:
-            complexity = int(round(
-                len(compress(section.get_data())) *
-                7.0 /
-                section.SizeOfRawData))
+            complexity = (
+                len(compress(section.get_data())) * 7.0 / section.SizeOfRawData)
             if complexity > 7:
                 complexity = 8
+            else:
+                complexity = int(round(complexity))
         data.append(pack("> B", complexity))
 
     if not isinstance(pe_file, PE):
