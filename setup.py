@@ -23,7 +23,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='1.0.0',
+    version='1.0.1',
 
     description='Revised peHash',
     long_description=long_description,
@@ -33,7 +33,7 @@ setup(
 
     # Author details
     author='AnyMaster',
-    author_email='arraynull@gmail.com',
+    author_email='ArrayNull@gmail.com',
 
     # Choose your license
     license='MIT',
@@ -60,6 +60,7 @@ setup(
         #'Programming Language :: Python :: 2',
         #'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.5'
     ],
 
     # What does your project relate to?

@@ -7,6 +7,7 @@ peHashNG, Portable Executable hash of structural properties
 https://github.com/AnyMaster/pehashng
 """
 
+from __future__ import print_function
 import logging
 from bz2 import compress
 from hashlib import sha256
@@ -14,7 +15,7 @@ from struct import pack
 
 from pefile import PE, PEFormatError
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 __author__ = 'AnyMaster'
 
 
@@ -81,7 +82,7 @@ def pehashng(pe_file):
 
     if not isinstance(pe_file, PE):
         exe.close()
-    data_sha256 = sha256("".join(data)).hexdigest()
+    data_sha256 = sha256(b"".join(data)).hexdigest()
 
     return data_sha256
 
@@ -89,6 +90,6 @@ def pehashng(pe_file):
 if __name__ == '__main__':
     import sys
     if len(sys.argv) < 2:
-        print "Usage: pehashng.py path_to_file"
+        print("Usage: pehashng.py path_to_file")
         sys.exit(0)
-    print pehashng(sys.argv[1]), sys.argv[1]
+    print(pehashng(sys.argv[1]), sys.argv[1])
