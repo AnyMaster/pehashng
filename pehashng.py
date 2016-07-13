@@ -73,7 +73,7 @@ def pehashng(pe_file):
         pack("> Q", align_up(exe.OPTIONAL_HEADER.SizeOfHeapCommit, 4096)),
         pack('> H', get_dirs_status() & data_directory_mask)]
 
-    for section in exe.sections:
+    for section in sorted(exe.sections, key=lambda x: x.VirtualAddress):
         data += [
             pack('> I', align_up(section.VirtualAddress, 512)),
             pack('> I', align_up(section.SizeOfRawData, 512)),
